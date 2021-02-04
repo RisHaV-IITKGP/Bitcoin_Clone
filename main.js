@@ -105,6 +105,9 @@ class BlockChain {
         block.mineBlock(this.difficulty);
 
         console.log('Block Successfully Mined !');
+
+        const previousBlock = this.getLatestBlock();
+        block.previousHash = previousBlock.hash;
         this.chain.push(block);
 
         this.pendingTransactions = [
@@ -168,5 +171,5 @@ Bitcoin.minePendingTransactions('MinerAddress');
 
 console.log('\n Miners Balance is : ' + Bitcoin.getBalanceOfAddress('MinerAddress'));
 
-//console.log(JSON.stringify(Bitcoin, null ,4));
+console.log(JSON.stringify(Bitcoin, null ,4));
 
